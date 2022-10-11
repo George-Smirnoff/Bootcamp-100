@@ -1,0 +1,5 @@
+1) Create a display
+2) create a turtle class with starting position and ability to move forward by y
+3) Create class block with random x position, random color, ability to move forward by x
+4) create class scoreboard
+3) create a check when turtle reached the end of display to update the score and increase speed

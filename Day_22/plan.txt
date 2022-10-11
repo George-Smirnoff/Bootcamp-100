@@ -1,0 +1,20 @@
+Ping pong game plan:
+
+1) Create a ball that will be moving from one side to another.
+    - starting position
+    - random direction
+    - reflection from boarders in correlation with previous path
+    - reaching the player line
+    - checking the player board and ball coordinates
+2) Create the player board
+    - moving ud/down using the key
+    - speed for the board
+    - checking the player board and ball coordinates
+3) The opponent board
+    - moving to the place where are ball moving
+    - random change to miss the ball
+4) Score table
+    - store and show game results
+
+5) Central line
+
