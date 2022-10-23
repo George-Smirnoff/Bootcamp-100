@@ -1,7 +1,5 @@
-import time
 from tkinter import *
 from PIL import ImageTk, Image
-import datetime
 
 # ------------------------ CONSTANTS ------------------------
 PINK = "#e2979c"
@@ -57,7 +55,7 @@ def countdown(count):
     elif REPS % 2 != 0:
         check_icon.config(text="✓")
 
-# ------------------------ UI SETUP ------------------------
+
 window = Tk()
 window.title('Pomodoro')
 window.minsize(width=600, height=600)
