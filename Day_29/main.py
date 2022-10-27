@@ -15,7 +15,7 @@ VAULT_PATH = 'vault.txt'
 PWD_LENGHT = 12
 
 
-# ------------------ FILE WRITE OPERATIONS ----------------------
+# ------------------ FILE READ/WRITE OPERATIONS ----------------------
 
 def save_pwd():
     website_data = website_field.get()
@@ -37,6 +37,25 @@ def save_pwd():
                                  'password': [pwd_data]})
             data.to_csv(VAULT_PATH, mode='a', header=not os.path.exists(VAULT_PATH), index='')
             clear_fields()
+
+def search_website():
+    try:
+        website_data = website_field.get()
+    finally:
+        if website_data == '':
+            messagebox.showinfo(title="Website", message="The website field is empty!")
+    try:
+        data = pd.read_csv(VAULT_PATH)
+        website_row = data[data.website == website_data]
+        messagebox.showinfo(title="Credentials", message=f"Email: {website_row.login[0]},\n"
+                                                     f"Password: {website_row.password[0]}")
+    except FileNotFoundError:
+        messagebox.showinfo(title="Vault", message="The vault not found...")
+    except Exception as e:
+        print(e)
+
+
+
 
 def clear_fields():
     website_field.delete(0, END)
@@ -70,6 +89,9 @@ canvas.create_image(64, 64, image=img, anchor="center")
 
 
 # Buttons
+search_button = Button(text='Search', width=13, command=search_website)
+search_button.grid(row=2, column=3)
+
 add_button = Button(text='Add', width=25, command=save_pwd)
 add_button.grid(row=5, column=2, columnspan=2)
 
@@ -89,8 +111,8 @@ pwd_text.grid(row=4, column=1)
 
 
 # Input
-website_field = Entry(width=30)
-website_field.grid(row=2, column=2, columnspan=2)
+website_field = Entry(width=13)
+website_field.grid(row=2, column=2)
 
 login_field = Entry(width=30)
 login_field.grid(row=3, column=2, columnspan=2)
