@@ -1,4 +1,5 @@
 import requests
+import html
 
 # question_data = [
 #     {"text": "A slug's blood is green.", "answer": "True"},
@@ -40,7 +41,7 @@ class Questions:
         for question in questions_data['results']:
 
             structure = {
-                "text": question['question'],
+                "text": html.unescape(question['question']),
                 "answer": question['correct_answer']
             }
             self.questions.append(structure)

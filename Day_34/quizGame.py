@@ -1,9 +1,12 @@
 from questionModel import Question
 from questionData import Questions
 from quizBrain import QuizBrain
+from quizUI import UI
 
 
 def main():
+
+
     # conclusion: any dictionary can be represented as class object
     question_bank = []
     question_data = Questions().question_list()
@@ -13,12 +16,7 @@ def main():
         )
 
     quiz = QuizBrain(q_list=question_bank)
-    while quiz.still_has_question():
-        quiz.next_question()
-
-    # You can create a method in class or retrieve the arguments from class
-    #1 quiz.final_results()
-    print(f"You have completed quiz game. Your final score is: {quiz.score}/{quiz.question_number}")
+    appUI = UI(quiz)
 
 if __name__ == '__main__':
     main()
