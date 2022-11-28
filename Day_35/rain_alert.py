@@ -29,12 +29,14 @@ def main():
     if send_sms:
         account_sid = os.environ['TWILIO_ACCOUNT_SID']
         auth_token = os.environ['TWILIO_AUTH_TOKEN']
+        caller_phone = os.environ['TWILIO_PHONE_NUMBER']
+        target_phone = os.environ['TARGET_PHONE_NUMBER']
         client = Client(account_sid, auth_token)
 
         client.messages.create(
             body='Hello,\nWe are expecting a rain this day. Take your umbrella!',
-            from_='SENDER',
-            to='RECEIVER'
+            from_=caller_phone,
+            to=target_phone
         )
         print('Message sent.')
 
